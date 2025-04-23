@@ -16,9 +16,7 @@ class CricketRankingViewModel : ViewModel() {
     private val _state = MutableStateFlow(CricketStateUI())
     val state = _state.asStateFlow()
 
-init {
-    event(OnEvent.GetTeamRanking("ODI", "women"))
-}
+
     fun event(event: OnEvent) {
         when (event) {
             is OnEvent.GetTeamRanking -> {
@@ -31,8 +29,11 @@ init {
         viewModelScope.launch {
             cricketRepo.getTeamRankingByTypeAndGender(type, gender).collect {
                 _state.value = state.value.copy(
+                    isLoading = true,
+                    data = it,
+                )
+                _state.value = state.value.copy(
                     isLoading = false,
-                    data = it
                 )
             }
         }

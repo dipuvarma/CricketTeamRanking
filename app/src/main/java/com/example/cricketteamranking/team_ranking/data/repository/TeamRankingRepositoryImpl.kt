@@ -1,7 +1,6 @@
 package com.example.cricketteamranking.team_ranking.data.repository
 
 
-import android.util.Log
 import com.example.cricketteamranking.team_ranking.data.dto.team_ranking_dto.TeamRankingDTO
 import com.example.cricketteamranking.team_ranking.data.mappers.toTeamRankingUI
 import com.example.cricketteamranking.team_ranking.data.remote.api.cricket_api.CricketApiRetrofitClient
@@ -15,6 +14,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class TeamRankingRepositoryImpl : TeamRankingRepository {
+
     override fun getTeamRankingByTypeAndGender(
         type: String,
         gender: String
